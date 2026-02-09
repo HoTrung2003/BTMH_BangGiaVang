@@ -1,0 +1,87 @@
+{
+  "status": 200,
+  "msg": "Thành công",
+  "timestamp": "2026-02-09 15:21:04",
+  "data": [
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Vàng miếng SJC (Cty CP BTMH)",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "SJC9999",
+      "giaMuaNiemYet": 17820000,
+      "giaBanNiemYet": 18120000,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 08:36:23.34"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Vàng nguyên liệu 999,9",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "NL9999",
+      "giaMuaNiemYet": 16650000,
+      "giaBanNiemYet": 0,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 14:34:49.513"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Vàng nguyên liệu 99.9",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "NL999",
+      "giaMuaNiemYet": 16600000,
+      "giaBanNiemYet": 0,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 14:34:57.973"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Đồng vàng Kim Gia Bảo hoa sen",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "KHS",
+      "giaMuaNiemYet": 17820000,
+      "giaBanNiemYet": 18120000,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 08:35:46.59"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Nhẫn Tròn ép vỉ (Kim Gia Bảo ) 24K (999.9)",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "KGB",
+      "giaMuaNiemYet": 17820000,
+      "giaBanNiemYet": 18120000,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 08:35:58.91"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Vàng Tiểu Kim Cát 24K (999.9) 0,1chỉ",
+      "khoiLuong": "0,1 chỉ",
+      "maLoaivang": "BT-TKC",
+      "giaMuaNiemYet": 1782000,
+      "giaBanNiemYet": 1812000,
+      "donViTinh": "VND/0,1 chỉ",
+      "ngayCapNhat": "2026-02-09 08:37:02.66"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Vàng trang sức  24K (999.9)",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "9999",
+      "giaMuaNiemYet": 17620000,
+      "giaBanNiemYet": 17970000,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 14:34:40.253"
+    },
+    {
+      "tenToChuc": "Công ty cổ phần Bảo Tín Mạnh Hải",
+      "loaiVang": "Vàng trang sức 24K (99.9)",
+      "khoiLuong": "1 chỉ",
+      "maLoaivang": "999",
+      "giaMuaNiemYet": 17610000,
+      "giaBanNiemYet": 17960000,
+      "donViTinh": "VND/1 chỉ",
+      "ngayCapNhat": "2026-02-09 14:34:31.72"
+    }
+  ]
+}
