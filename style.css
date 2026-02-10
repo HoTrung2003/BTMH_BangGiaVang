@@ -86,7 +86,7 @@ body {
   justify-content: center;
   align-items: center;
   /* [CHỈNH SỬA] Khoảng cách giữa 2 ảnh để không trùng nhau */
-  gap: 5%;
+  gap: 0%;
 }
 
 .page-title .logo {
