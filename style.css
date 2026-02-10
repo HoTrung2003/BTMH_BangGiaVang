@@ -52,21 +52,15 @@ body {
 }
 
 
+/* [CHỈNH SỬA] Đã gộp hết vào .price-note */
 .page-title {
-  margin: 0;
-  position: relative;
-  min-height: 5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0%;
+  display: none;
 }
 
-.page-title .logo {
-  position: static;
-  transform: none;
-  max-width: 20%;
-  gap: 0;
+.header-top-row .logo {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 25%;
 }
 
 
@@ -77,28 +71,43 @@ body {
   object-fit: contain;
 }
 
-.title-image-wrapper {
+.header-top-row .title-image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
-  max-width: 70%;
+  max-width: 50%;
   margin: 0;
 }
 
 .title-image-wrapper img {
-  max-width: 80%;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
 }
 
-.price-note {
-  font-size: 1.35rem;
-  color: #ffffff;
+.header-top-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem; /* Khoảng cách giữa logo và tiêu đề */
+  padding: 0 2rem;
+}
+
+.unit-note-container {
+  width: 100%;
   text-align: right;
   padding-right: 3rem;
+  margin-top: -0.5rem; /* Tucking it closer to the title */
+  margin-bottom: 0.2rem;
+}
+
+.unit-note-container p {
+  /* [CHỈNH SỬA] Cỡ chữ ghi chú bé lại như yêu cầu */
+  font-size: 1.5rem;
+  color: #f6e7db;
   font-style: italic;
-  margin-bottom: 0.5%;
+  margin: 0;
 }
 
 .main-content {
@@ -131,44 +140,50 @@ body {
 .price-table-header {
   margin-bottom: 0;
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 5px 0;
+  border-collapse: collapse;
+  /* [CHỈNH SỬA] Xóa border-spacing để ảnh nền chạy xuyên suốt */
+  border-spacing: 0;
 }
 
 .price-table-header thead tr {
   display: table-row;
+  /* [CHỈNH SỬA] Đưa ảnh nền vào cả hàng tiêu đề */
+  background: url("images/thanh tieu de.png") no-repeat center center;
+  background-size: 100% 100%;
 }
 
 .price-table-header thead th {
-  padding: 0.68rem 1.25rem;
+  /* [CHỈNH SỬA] Giảm padding thead 10% (0.6 -> 0.54) */
+  padding: 0.40rem 1.25rem;
   text-align: center;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.56rem;
   color: #880203;
-  box-shadow: inset 0 0.0625rem 0 #fff;
-  border-radius: 0.375rem;
+  /* [CHỈNH SỬA] Xóa bóng và bo góc để ảnh nền hiển thị tốt */
+  box-shadow: none;
+  border-radius: 0;
   letter-spacing: 0.0625rem;
-  background: linear-gradient(to bottom, #f1c232 0%, #ffffff 50%, #f1c232 100%);
+  background: transparent;
 }
 
 .price-table-header thead th:nth-child(1) {
-  width: 22%;
+  width: 20.3%;
 }
 
 .price-table-header thead th:nth-child(2) {
-  width: 32%;
+  width: 31.8%;
 }
 
 .price-table-header thead th:nth-child(3) {
-  width: 15%;
+  width: 10.3%;
 }
 
 .price-table-header thead th:nth-child(4) {
-  width: 14%;
+  width: 19%;
 }
 
 .price-table-header thead th:nth-child(5) {
-  width: 17%;
+  width: 19%;
 }
 
 .price-table-body tbody tr {
@@ -177,31 +192,32 @@ body {
 }
 
 .price-table-body td {
-  padding: 1.1rem 1.5625rem;
+  /* [CHỈNH SỬA] Giảm padding 10% (1.1 -> 1.0) và tăng font 20% (1.35 -> 1.62) */
+  padding: 0.8rem 1.5625rem;
   text-align: left;
-  font-size: 1.35rem;
+  font-size: 1.62rem;
   font-weight: bold;
-  color: #fff;
+  color: #f6e7db;
 }
 
 .price-table-body td:nth-child(1) {
-  width: 22%;
+  width: 20.3%;
 }
 
 .price-table-body td:nth-child(2) {
-  width: 32%;
+  width: 31.8%;
 }
 
 .price-table-body td:nth-child(3) {
-  width: 15%;
+  width: 10.3%;
 }
 
 .price-table-body td:nth-child(4) {
-  width: 14%;
+  width: 19%;
 }
 
 .price-table-body td:nth-child(5) {
-  width: 17%;
+  width: 19%;
 }
 
 .price-table-header thead th,
@@ -211,8 +227,9 @@ body {
 
 .price-table .category {
   font-weight: bold;
-  font-size: 1.35rem;
-  color: #fff;
+  /* [CHỈNH SỬA] Tăng font 20% (1.35 -> 1.62) */
+  font-size: 1.62rem;
+  color: #f6e7db;
   min-width: 12rem;
   width: 12rem;
   transition: all 0.3s ease;
@@ -222,8 +239,9 @@ body {
   text-align: right;
   min-width: 120px;
   font-weight: bold;
-  color: #fff;
-  font-size: 1.35rem;
+  color: #f6e7db;
+  /* [CHỈNH SỬA] Tăng font 20% (1.35 -> 1.62) */
+  font-size: 1.62rem;
 }
 
 .category-row {
@@ -231,9 +249,10 @@ body {
 }
 
 .category-row td {
-  padding: 1rem 1.5625rem;
+  /* [CHỈNH SỬA] Giảm padding 10% (1.0 -> 0.9) */
+  padding: 0.9rem 1.5625rem;
   vertical-align: middle;
-  color: #fff;
+  color: #f6e7db;
 }
 .table-scroll {
   overflow-x: auto;
@@ -242,6 +261,7 @@ body {
 }
 @media (max-width: 768px) {
   html {
+    /* [CHỈNH SỬA] Reset cỡ chữ gốc trên mobile để rem hoạt động bình thường */
     font-size: 16px;
   }
   
@@ -250,58 +270,89 @@ body {
     padding: 0 10px;
   }
 
-  .header {
+  /* [CHỈNH SỬA] Xếp chồng Header theo chiều dọc: Logo -> Tiêu đề -> Đơn vị */
+  .header-top-row {
+    flex-direction: column;
+    gap: 1rem;
     padding: 0.5rem 0;
   }
 
-  .page-title {
-    flex-direction: column;
-    min-height: auto;
-    margin-bottom: 0.5rem;
-    gap: 10px;
-  }
-
-  .page-title .logo {
-    position: static;
-    transform: none;
-    max-width: 60%;
-    margin-bottom: 0;
+  .header-top-row .logo {
+    max-width: 70%;
     justify-content: center;
-    padding-left: 0;
   }
 
-  .title-image-wrapper {
-    max-width: 90%;
+  .header-top-row .title-image-wrapper {
+    max-width: 95%;
   }
 
-  .price-note {
-    padding-right: 0;
+  .unit-note-container {
     text-align: center;
-    font-size: 1rem;
-    margin-bottom: 10px;
+    padding-right: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .unit-note-container p {
+    /* [CHỈNH SỬA] Làm bé Đơn vị tính trên mobi (như yêu cầu) */
+    font-size: 0.9rem;
   }
 
   .main-content {
     padding: 0;
   }
 
+  /* [CHỈNH SỬA] Đảm bảo font size đồng nhất và cho phép xuống dòng ở tiêu đề */
   .price-table-header thead th,
-  .price-table-body td {
-    font-size: 0.9rem; /* Cỡ chữ vừa phải cho mobile */
-    padding: 0.5rem 0.5rem;
-    white-space: nowrap; /* không xuống dòng, giữ bảng rộng để scroll */
+  .price-table-body td,
+  .price-table .category,
+  .price-table .price {
+    font-size: 0.95rem; 
+    padding: 0.6rem 0.4rem;
+    white-space: nowrap; 
   }
 
-  .price-table-header {
-    border-spacing: 2px 0;
+  .price-table-header thead th {
+    white-space: normal !important;
+    line-height: 1.2;
+    vertical-align: middle;
   }
-  
+
+  /* [CHỈNH SỬA] Tăng min-width và điều chỉnh tỉ lệ cột trên mobile */
   .price-table-header,
   .price-table-body {
-    min-width: 900px; 
+    min-width: 1000px; 
+  }
+
+  .price-table-header thead th:nth-child(1),
+  .price-table-body td:nth-child(1),
+  .price-table .category {
+    width: 20.3% !important;
+    min-width: 150px;
+    white-space: normal !important;
+  }
+
+  .price-table-header thead th:nth-child(2),
+  .price-table-body td:nth-child(2) {
+    width: 31.8% !important;
+    min-width: 200px;
+  }
+
+  .price-table-header thead th:nth-child(3),
+  .price-table-body td:nth-child(3) {
+    width: 10.3% !important;
+    min-width: 120px;
+  }
+
+  .price-table-header thead th:nth-child(4),
+  .price-table-body td:nth-child(4),
+  .price-table-header thead th:nth-child(5),
+  .price-table-body td:nth-child(5) {
+    width: 19% !important;
+    min-width: 140px;
   }
   
   .category-row td {
-      padding: 0.5rem 0.5rem;
+      padding: 0.6rem 0.4rem;
   }
 }
