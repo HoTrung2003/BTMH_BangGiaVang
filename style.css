@@ -4,9 +4,8 @@
   box-sizing: border-box;
 }
 
-/* Base responsive font sizing */
 html {
-  font-size: 16px; /* 1rem = 16px by default */
+  font-size: 20px;
 }
 
 body {
@@ -24,7 +23,8 @@ body {
   margin: 0 auto;
 }
 .header {
-  padding: 2.5rem 1.25rem;
+  /* [CHỈNH SỬA] Padding header (giảm nữa theo yêu cầu) */
+  padding: 2.5rem 1.25rem 0.5rem 1.25rem;
   text-align: center;
 }
 
@@ -33,11 +33,11 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  gap: 30px; /* Khoảng cách giữa các phần tử con */
+  gap: 30px;
 }
 
 .logo {
-  max-width: 28%;
+  max-width: 35%;
   width: 100%;
   height: auto;
   border: none;
@@ -77,19 +77,24 @@ body {
 }
 
 .page-title {
-  margin: 1.25rem 0;
+  /* [CHỈNH SỬA] Margin tiêu đề (giảm 1/2 chiều dọc) */
+  margin: 0.625rem 0;
   position: relative;
-  min-height: 10rem;
+  /* [CHỈNH SỬA] Chiều cao tối thiểu (giảm 1/2 chiều dọc) */
+  min-height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* [CHỈNH SỬA] Khoảng cách giữa 2 ảnh để không trùng nhau */
+  gap: 5%;
 }
 
 .page-title .logo {
-  position: absolute;
-  left: 0%;
-  top: 50%;
-  transform: translateY(-50%);
+  /* [CHỈNH SỬA] Logo để static (trong dòng) để không đè lên ảnh kia */
+  position: static;
+  transform: none;
+  /* Giới hạn chiều rộng logo */
+  max-width: 20%;
   gap: 0;
 }
 
@@ -111,18 +116,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 40%;
-  margin: 0 auto;
+  width: auto;
+  /* [CHỈNH SỬA] Giới hạn ảnh tiêu đề để chừa chỗ cho logo */
+  max-width: 70%;
+  margin: 0;
 }
 
 .title-image-wrapper img {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
   object-fit: contain;
 }
 
 .price-note {
-  font-size: 0.875rem;
+  /* [CHỈNH SỬA] Cỡ chữ ghi chú đơn vị tính - to hơn */
+  font-size: 1.125rem;
   color: #ffffff;
   text-align: right;
   padding-right: 3rem;
@@ -130,7 +138,8 @@ body {
 }
 
 .main-content {
-  padding: 2.5rem 3.125rem;
+  /* [CHỈNH SỬA] Padding main content (giảm nữa theo yêu cầu) */
+  padding: 0.5rem 3.125rem 2.5rem 3.125rem;
 }
 
 .tables-wrapper {
@@ -145,7 +154,6 @@ body {
   background-color: transparent;
 }
 
-/* Ensure header/body tables share column widths */
 .price-table,
 .price-table-header,
 .price-table-body {
@@ -191,12 +199,15 @@ body {
 }
 
 .price-table-header thead th:nth-child(3) {
-  width: 22%;
+  width: 15%;
 }
 
-.price-table-header thead th:nth-child(4),
+.price-table-header thead th:nth-child(4) {
+  width: 14%;
+}
+
 .price-table-header thead th:nth-child(5) {
-  width: 12%;
+  width: 17%;
 }
 
 .price-table-body tbody tr {
@@ -207,7 +218,8 @@ body {
 .price-table-body td {
   padding: 1.25rem 1.5625rem;
   text-align: left;
-  font-size: 1rem;
+  /* [CHỈNH SỬA] Cỡ chữ nội dung bảng - bằng thead (1.125rem) */
+  font-size: 1.125rem;
   color: #fff;
 }
 
@@ -220,15 +232,17 @@ body {
 }
 
 .price-table-body td:nth-child(3) {
-  width: 22%;
+  width: 15%;
 }
 
-.price-table-body td:nth-child(4),
+.price-table-body td:nth-child(4) {
+  width: 14%;
+}
+
 .price-table-body td:nth-child(5) {
-  width: 12%;
+  width: 17%;
 }
 
-/* Allow cells to wrap and avoid overflow on small screens */
 .price-table-header thead th,
 .price-table-body td {
   overflow-wrap: anywhere;
@@ -248,7 +262,8 @@ body {
   min-width: 120px;
   font-weight: bold;
   color: #fff;
-  font-size: 17px;
+  /* [CHỈNH SỬA] Cỡ chữ giá tiền - bằng thead (1.125rem) */
+  font-size: 1.125rem;
 }
 
 .category-row {
@@ -300,7 +315,7 @@ body {
   }
   .price-table-header,
   .price-table-body {
-    min-width: 900px; /* hoặc 1000px tùy nội dung */
+    min-width: 900px;
   }
 
   .price-note {
