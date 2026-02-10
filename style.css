@@ -23,18 +23,11 @@ body {
   margin: 0 auto;
 }
 .header {
-  /* [CHỈNH SỬA] Padding header (giảm nữa theo yêu cầu) */
   padding: 2.5rem 1.25rem 0.5rem 1.25rem;
   text-align: center;
 }
 
-.logo-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 30px;
-}
+
 
 .logo {
   max-width: 35%;
@@ -57,54 +50,26 @@ body {
   object-fit: contain; /* Giữ tỉ lệ ảnh bên trong khung */
   border-radius: 2px;
 }
-.gold-text {
-  font-size: clamp(2.5rem, 8vw, 9rem);
-  font-weight: 200;
-  background: linear-gradient(
-    to bottom,
-    #ffe89e 0%,
-    #faf9cd 30%,
-    #faf9cd 60%,
-    #ffeaa5 100%
-  );
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* fallback cho trình duyệt khác */
-  background-clip: text;
-  color: transparent;
-}
 
 .page-title {
-  /* [CHỈNH SỬA] Margin tiêu đề (giảm 1/2 chiều dọc) */
   margin: 0.625rem 0;
   position: relative;
-  /* [CHỈNH SỬA] Chiều cao tối thiểu (giảm 1/2 chiều dọc) */
   min-height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* [CHỈNH SỬA] Khoảng cách giữa 2 ảnh để không trùng nhau */
   gap: 0%;
 }
 
 .page-title .logo {
-  /* [CHỈNH SỬA] Logo để static (trong dòng) để không đè lên ảnh kia */
   position: static;
   transform: none;
-  /* Giới hạn chiều rộng logo */
   max-width: 20%;
   gap: 0;
 }
 
-.page-title h1 {
-  font-size: clamp(1.6rem, 4vw, 3rem);
-  color: #d4af37;
-  letter-spacing: 0.25rem;
-  font-weight: bold;
-  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
-}
+
 
 .page-title-img {
   max-width: 100%;
@@ -117,7 +82,6 @@ body {
   justify-content: center;
   align-items: center;
   width: auto;
-  /* [CHỈNH SỬA] Giới hạn ảnh tiêu đề để chừa chỗ cho logo */
   max-width: 70%;
   margin: 0;
 }
@@ -129,7 +93,6 @@ body {
 }
 
 .price-note {
-  /* [CHỈNH SỬA] Cỡ chữ ghi chú đơn vị tính - to hơn */
   font-size: 1.125rem;
   color: #ffffff;
   text-align: right;
@@ -138,7 +101,6 @@ body {
 }
 
 .main-content {
-  /* [CHỈNH SỬA] Padding main content (giảm nữa theo yêu cầu) */
   padding: 0.5rem 3.125rem 2.5rem 3.125rem;
 }
 
@@ -187,7 +149,7 @@ body {
   box-shadow: inset 0 0.0625rem 0 #fff;
   border-radius: 0.375rem;
   letter-spacing: 0.0625rem;
-  background: linear-gradient(to bottom, #f1c232 0%, #fff8d3 50%, #f1c232 100%);
+  background: linear-gradient(to bottom, #f1c232 0%, #ffffff 50%, #f1c232 100%);
 }
 
 .price-table-header thead th:nth-child(1) {
@@ -218,7 +180,6 @@ body {
 .price-table-body td {
   padding: 1.25rem 1.5625rem;
   text-align: left;
-  /* [CHỈNH SỬA] Cỡ chữ nội dung bảng - bằng thead (1.125rem) */
   font-size: 1.125rem;
   color: #fff;
 }
@@ -262,7 +223,6 @@ body {
   min-width: 120px;
   font-weight: bold;
   color: #fff;
-  /* [CHỈNH SỬA] Cỡ chữ giá tiền - bằng thead (1.125rem) */
   font-size: 1.125rem;
 }
 
