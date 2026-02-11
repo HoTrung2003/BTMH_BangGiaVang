@@ -1,115 +1,115 @@
-window.addEventListener("DOMContentLoaded", () => {
-  fetch("data.json")
-    .then((res) => res.json())
-    .then((result) => {
-      if (result.status !== 200) return;
+async function loadGoldPrices() {
+  try {
+    const response = await fetch('data.json');
+    const jsonData = await response.json();
+    const data = jsonData.data;
 
-      const rows = document.querySelectorAll("#price-table-body tr");
-      const dataItems = result.data || [];
-
-      // Mapping: keyword → loaiVang in JSON
-      const mapping = {
-        "Vàng miếng SJC": "Vàng miếng SJC (Cty CP BTMH)",
-        "Đồng vàng Hoa sen": "Đồng vàng Kim Gia Bảo hoa sen",
-        "Nhẫn tròn ép vi": "Nhẫn Tròn ép vỉ (Kim Gia Bảo ) 24K (999.9)",
-        "Lúa, Đậu, Lạc": "Vàng Tiểu Kim Cát 24K (999.9) 0,1chỉ",
-        "Trang sức 24K": "Vàng trang sức 24K (99.9)",
-        "Tứ Quý (Tùng, Cúc, Trúc, Mai)":
-          "Nhẫn Tròn ép vỉ (Kim Gia Bảo ) 24K (999.9)", // Kim Gia Bảo
-        "Nhẫn tròn BTMH": "Nhẫn Tròn ép vỉ (Kim Gia Bảo ) 24K (999.9)",
+    const priceMap = {};
+    data.forEach(item => {
+      priceMap[item.loaiVang] = {
+        giaMua: item.giaMuaNiemYet,
+        giaBan: item.giaBanNiemYet
       };
+    });
 
-      rows.forEach((tr) => {
-        const tds = Array.from(tr.querySelectorAll("td"));
-        if (tds.length < 1) return;
+    function formatPrice(price) {
+      if (price === 0) {
+        return '';
+      }
+      return (price / 1000).toLocaleString('vi-VN');
+    }
 
-        const col1 = (tds[0].textContent || "").trim();
-        const col2 =
-          tds[0].hasAttribute("colspan") &&
-          parseInt(tds[0].getAttribute("colspan"), 10) >= 2
-            ? ""
-            : tds[1]
-            ? (tds[1].textContent || "").trim()
-            : "";
+    function formatDualPrices(price1, price2) {
+      const formatted1 = formatPrice(price1);
+      const formatted2 = formatPrice(price2);
+      
+      if (!formatted1 && !formatted2) return '';
+      if (!formatted1) return formatted2;
+      if (!formatted2) return formatted1;
+      
+      const br = document.createElement('br');
+      const container = document.createElement('span');
+      container.innerHTML = formatted1 + '<br>' + formatted2;
+      return container.innerHTML;
+    }
 
-        const muaCell = tds[tds.length - 2];
-        const banCell = tds[tds.length - 1];
+    function getDualPrices(loaiVang1, loaiVang2) {
+      const prices1 = priceMap[loaiVang1] || { giaMua: 0, giaBan: 0 };
+      const prices2 = priceMap[loaiVang2] || { giaMua: 0, giaBan: 0 };
+      
+      return {
+        giaMua: formatDualPrices(prices1.giaMua, prices2.giaMua),
+        giaBan: formatDualPrices(prices1.giaBan, prices2.giaBan),
+        isDual: true
+      };
+    }
 
-        // Special case: "Nguyên liệu"
-        if (col1.includes("Nguyên liệu")) {
-          const nl999 = dataItems.find(
-            (item) => item.loaiVang === "Vàng nguyên liệu 999,9"
+    const rows = document.querySelectorAll('#price-table-body tr');
+
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('td');
+      if (cells.length < 3) return;
+
+      const productName = cells[cells.length - 4].textContent.trim();
+      let prices = { giaMua: 0, giaBan: 0 };
+
+      switch(productName) {
+        case 'Nhẫn tròn ép vỉ':
+          prices = priceMap['Nhẫn Tròn ép vỉ (Kim Gia Bảo ) 24K (999.9)'] || prices;
+          break;
+        case 'Nhẫn tròn BTMH':
+          prices = priceMap['Nhẫn Tròn ép vỉ (Kim Gia Bảo ) 24K (999.9)'] || prices;
+          break;
+
+        case 'Đồng vàng Hoa sen':
+          prices = priceMap['Đồng vàng Kim Gia Bảo hoa sen'] || prices;
+          break;
+
+        case 'Tứ Quý (Tùng, Cúc, Trúc, Mai)':
+          const categoryCell = row.closest('tbody').querySelector('.category');
+          prices = priceMap['Vàng Tiểu Kim Cát 24K (999.9) 0,1chỉ'] || prices;
+          break;
+
+        case 'Lúa, Đậu, Lạc':
+          prices = priceMap['Vàng Tiểu Kim Cát 24K (999.9) 0,1chỉ'] || prices;
+          break;
+
+        case 'Trang sức 24K':
+          prices = getDualPrices(
+            'Vàng trang sức  24K (999.9)',
+            'Vàng trang sức 24K (99.9)'
           );
-          const nl99 = dataItems.find(
-            (item) => item.loaiVang === "Vàng nguyên liệu 99.9"
+          break;
+
+        case 'Khối, thỏi, hạt, miếng, và các loại khác':
+          prices = getDualPrices(
+            'Vàng nguyên liệu 999,9',
+            'Vàng nguyên liệu 99.9'
           );
+          break;
 
-          if (nl999 && nl99) {
-            const mua =
-              (nl999.giaMuaNiemYet > 0
-                ? nl999.giaMuaNiemYet.toLocaleString()
-                : "") +
-              "<br />" +
-              (nl99.giaMuaNiemYet > 0
-                ? nl99.giaMuaNiemYet.toLocaleString()
-                : "");
-            const ban =
-              nl999.giaBanNiemYet.toLocaleString() +
-              "<br />" +
-              nl99.giaBanNiemYet.toLocaleString();
+        case 'Vàng miếng SJC (Công ty cổ phần Bảo Tín Mạnh Hải)':
+          prices = priceMap['Vàng miếng SJC (Cty CP BTMH)'] || prices;
+          break;
+      }
 
-            if (muaCell) muaCell.innerHTML = mua;
-            if (banCell) banCell.innerHTML = ban;
-            return;
-          }
-        }
+      // Update price cells (last 2 cells)
+      const muaCell = cells[cells.length - 2];
+      const banCell = cells[cells.length - 1];
 
-        // Special case: Tứ Quý in Tiểu Kim Cát
-        if (col1.includes("Tiểu Kim Cát") && col2.includes("Tứ Quý")) {
-          const matchedItem = dataItems.find(
-            (item) => item.loaiVang === "Vàng Tiểu Kim Cát 24K (999.9) 0,1chỉ"
-          );
-          if (matchedItem) {
-            if (muaCell) {
-              muaCell.textContent =
-                matchedItem.giaMuaNiemYet && matchedItem.giaMuaNiemYet > 0
-                  ? matchedItem.giaMuaNiemYet.toLocaleString()
-                  : "";
-            }
-            if (banCell) {
-              banCell.textContent =
-                matchedItem.giaBanNiemYet && matchedItem.giaBanNiemYet > 0
-                  ? matchedItem.giaBanNiemYet.toLocaleString()
-                  : "";
-            }
-            return;
-          }
-        }
+      if (prices.isDual) {
+        muaCell.innerHTML = prices.giaMua;
+        banCell.innerHTML = prices.giaBan;
+      } else {
+        muaCell.textContent = formatPrice(prices.giaMua);
+        banCell.textContent = formatPrice(prices.giaBan);
+      }
+    });
 
-        // Check mapping
-        let matchedItem = null;
-        for (const [keyword, loaiVang] of Object.entries(mapping)) {
-          if (col1.includes(keyword) || col2.includes(keyword)) {
-            matchedItem = dataItems.find((item) => item.loaiVang === loaiVang);
-            if (matchedItem) break;
-          }
-        }
+  } catch (error) {
+    console.error('Error loading gold prices:', error);
+  }
+}
 
-        if (matchedItem) {
-          if (muaCell) {
-            muaCell.textContent =
-              matchedItem.giaMuaNiemYet && matchedItem.giaMuaNiemYet > 0
-                ? matchedItem.giaMuaNiemYet.toLocaleString()
-                : "";
-          }
-          if (banCell) {
-            banCell.textContent =
-              matchedItem.giaBanNiemYet && matchedItem.giaBanNiemYet > 0
-                ? matchedItem.giaBanNiemYet.toLocaleString()
-                : "";
-          }
-        }
-      });
-    })
-    .catch((err) => console.error("Lỗi lấy dữ liệu:", err));
-});
+// Load prices when page loads
+document.addEventListener('DOMContentLoaded', loadGoldPrices);

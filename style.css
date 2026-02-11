@@ -23,14 +23,19 @@ body {
   margin: 0 auto;
 }
 .header {
-  padding: 0 1.25rem 0 1.25rem;
+  /* [CHỈNH SỬA KHOẢNG CÁCH LỀ TRÊN] Thay đổi margin-top để điều chỉnh khoảng cách từ trên xuống */
+  margin-top: 0.5rem;
+  /* [CHỈNH SỬA CĂN CHỈNH LOGO] Loại bỏ padding-left để logo sát trái hoàn toàn */
+  padding: 0;
   text-align: center;
 }
 
 
 
 .logo {
-  max-width: 35%;
+  /* [CHỈNH SỬA KÍCH THƯỚC LOGO] Thay đổi max-width để điều chỉnh kích thước logo */
+  /* Tăng 20% so với trước (35% -> 42%) */
+  max-width: 42%;
   width: 100%;
   height: auto;
   border: none;
@@ -40,6 +45,7 @@ body {
   font-size: 3rem;
   font-weight: bold;
   color: #d4af37;
+  padding-left: 5.5rem;
   background-color: transparent;
   border-radius: 0.25rem;
 }
@@ -60,7 +66,10 @@ body {
 .header-top-row .logo {
   display: flex;
   justify-content: flex-start;
-  max-width: 25%;
+  /* [CHỈNH SỬA KÍCH THƯỚC LOGO TRONG HEADER] Điều chỉnh max-width để thay đổi kích thước logo */
+  max-width: 30%;
+  /* [CHỈNH SỬA VỊ TRÍ LOGO] Logo nằm bên trái, không co giãn */
+  flex-shrink: 0;
 }
 
 
@@ -75,8 +84,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* [CHỈNH SỬA CĂN GIỮA TIÊU ĐỀ] flex-grow để tiêu đề chiếm không gian còn lại và tự căn giữa */
+  flex-grow: 1;
   width: auto;
-  max-width: 50%;
+  /* [CHỈNH SỬA KÍCH THƯỚC ẢNH TIÊU ĐỀ] Điều chỉnh max-width để thay đổi kích thước ảnh tiêu đề */
+  max-width: 60%;
   margin: 0;
 }
 
@@ -84,26 +96,28 @@ body {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+
 }
 
 .header-top-row {
   display: flex;
-  justify-content: center;
+  /* [CHỈNH SỬA CĂN CHỈNH LAYOUT] justify-content: flex-start để logo và tiêu đề không chồng lên nhau */
+  justify-content: flex-start;
   align-items: center;
-  gap: 3rem; /* Khoảng cách giữa logo và tiêu đề */
-  padding: 0 2rem;
+  /* [CHỈNH SỬA KHOẢNG CÁCH GIỮA 2 ẢNH] Thay đổi gap để điều chỉnh khoảng cách giữa logo và tiêu đề */
+  gap: 0;
+  padding: 0;
 }
 
 .unit-note-container {
   width: 100%;
   text-align: right;
   padding-right: 3rem;
-  margin-top: -0.5rem; /* Tucking it closer to the title */
+  margin-top: -0.5rem;
   margin-bottom: 0.2rem;
 }
 
 .unit-note-container p {
-  /* [CHỈNH SỬA] Cỡ chữ ghi chú bé lại như yêu cầu */
   font-size: 1.5rem;
   color: #f6e7db;
   font-style: italic;
@@ -141,25 +155,21 @@ body {
   margin-bottom: 0;
   width: 100%;
   border-collapse: collapse;
-  /* [CHỈNH SỬA] Xóa border-spacing để ảnh nền chạy xuyên suốt */
   border-spacing: 0;
 }
 
 .price-table-header thead tr {
   display: table-row;
-  /* [CHỈNH SỬA] Đưa ảnh nền vào cả hàng tiêu đề */
   background: url("images/thanh tieu de.png") no-repeat center center;
   background-size: 100% 100%;
 }
 
 .price-table-header thead th {
-  /* [CHỈNH SỬA] Giảm padding thead 10% (0.6 -> 0.54) */
   padding: 0.40rem 1.25rem;
   text-align: center;
   font-weight: bold;
   font-size: 1.56rem;
   color: #880203;
-  /* [CHỈNH SỬA] Xóa bóng và bo góc để ảnh nền hiển thị tốt */
   box-shadow: none;
   border-radius: 0;
   letter-spacing: 0.0625rem;
@@ -191,9 +201,13 @@ body {
   color: #fff;
 }
 
+/* [CHỈNH SỬA] Loại bỏ border ở hàng cuối cùng */
+.price-table-body tbody tr:last-child {
+  border-bottom: none;
+}
+
 .price-table-body td {
-  /* [CHỈNH SỬA] Giảm padding 10% (1.1 -> 1.0) và tăng font 20% (1.35 -> 1.62) */
-  padding: 0.8rem 1.5625rem;
+  padding: 0.70rem 1.5625rem;
   text-align: left;
   font-size: 1.62rem;
   font-weight: bold;
@@ -227,7 +241,6 @@ body {
 
 .price-table .category {
   font-weight: bold;
-  /* [CHỈNH SỬA] Tăng font 20% (1.35 -> 1.62) */
   font-size: 1.62rem;
   color: #f6e7db;
   min-width: 12rem;
@@ -240,7 +253,6 @@ body {
   min-width: 120px;
   font-weight: bold;
   color: #f6e7db;
-  /* [CHỈNH SỬA] Tăng font 20% (1.35 -> 1.62) */
   font-size: 1.62rem;
 }
 
@@ -249,8 +261,7 @@ body {
 }
 
 .category-row td {
-  /* [CHỈNH SỬA] Giảm padding 10% (1.0 -> 0.9) */
-  padding: 0.9rem 1.5625rem;
+  padding: 0.81rem 1.5625rem;
   vertical-align: middle;
   color: #f6e7db;
 }
@@ -261,7 +272,6 @@ body {
 }
 @media (max-width: 768px) {
   html {
-    /* [CHỈNH SỬA] Reset cỡ chữ gốc trên mobile để rem hoạt động bình thường */
     font-size: 16px;
   }
   
@@ -270,7 +280,6 @@ body {
     padding: 0 10px;
   }
 
-  /* [CHỈNH SỬA] Xếp chồng Header theo chiều dọc: Logo -> Tiêu đề -> Đơn vị */
   .header-top-row {
     flex-direction: column;
     gap: 1rem;
@@ -280,6 +289,8 @@ body {
   .header-top-row .logo {
     max-width: 70%;
     justify-content: center;
+    /* [CHỈNH SỬA MOBILE] Loại bỏ padding-left trên mobile để logo không bị lệch */
+    padding-left: 0;
   }
 
   .header-top-row .title-image-wrapper {
@@ -294,7 +305,6 @@ body {
   }
 
   .unit-note-container p {
-    /* [CHỈNH SỬA] Làm bé Đơn vị tính trên mobi (như yêu cầu) */
     font-size: 0.9rem;
   }
 
@@ -302,7 +312,6 @@ body {
     padding: 0;
   }
 
-  /* [CHỈNH SỬA] Đảm bảo font size đồng nhất và cho phép xuống dòng ở tiêu đề */
   .price-table-header thead th,
   .price-table-body td,
   .price-table .category,
@@ -318,7 +327,6 @@ body {
     vertical-align: middle;
   }
 
-  /* [CHỈNH SỬA] Tăng min-width và điều chỉnh tỉ lệ cột trên mobile */
   .price-table-header,
   .price-table-body {
     min-width: 1000px; 
