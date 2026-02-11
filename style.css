@@ -23,9 +23,7 @@ body {
   margin: 0 auto;
 }
 .header {
-  /* [CHỈNH SỬA KHOẢNG CÁCH LỀ TRÊN] Thay đổi margin-top để điều chỉnh khoảng cách từ trên xuống */
   margin-top: 0.5rem;
-  /* [CHỈNH SỬA CĂN CHỈNH LOGO] Loại bỏ padding-left để logo sát trái hoàn toàn */
   padding: 0;
   text-align: center;
 }
@@ -33,8 +31,6 @@ body {
 
 
 .logo {
-  /* [CHỈNH SỬA KÍCH THƯỚC LOGO] Thay đổi max-width để điều chỉnh kích thước logo */
-  /* Tăng 20% so với trước (35% -> 42%) */
   max-width: 42%;
   width: 100%;
   height: auto;
@@ -53,22 +49,14 @@ body {
 .logo img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Giữ tỉ lệ ảnh bên trong khung */
+  object-fit: contain; 
   border-radius: 2px;
-}
-
-
-/* [CHỈNH SỬA] Đã gộp hết vào .price-note */
-.page-title {
-  display: none;
 }
 
 .header-top-row .logo {
   display: flex;
   justify-content: flex-start;
-  /* [CHỈNH SỬA KÍCH THƯỚC LOGO TRONG HEADER] Điều chỉnh max-width để thay đổi kích thước logo */
   max-width: 30%;
-  /* [CHỈNH SỬA VỊ TRÍ LOGO] Logo nằm bên trái, không co giãn */
   flex-shrink: 0;
 }
 
@@ -84,10 +72,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* [CHỈNH SỬA CĂN GIỮA TIÊU ĐỀ] flex-grow để tiêu đề chiếm không gian còn lại và tự căn giữa */
   flex-grow: 1;
   width: auto;
-  /* [CHỈNH SỬA KÍCH THƯỚC ẢNH TIÊU ĐỀ] Điều chỉnh max-width để thay đổi kích thước ảnh tiêu đề */
   max-width: 60%;
   margin: 0;
 }
@@ -101,10 +87,8 @@ body {
 
 .header-top-row {
   display: flex;
-  /* [CHỈNH SỬA CĂN CHỈNH LAYOUT] justify-content: flex-start để logo và tiêu đề không chồng lên nhau */
   justify-content: flex-start;
   align-items: center;
-  /* [CHỈNH SỬA KHOẢNG CÁCH GIỮA 2 ẢNH] Thay đổi gap để điều chỉnh khoảng cách giữa logo và tiêu đề */
   gap: 0;
   padding: 0;
 }
@@ -136,7 +120,7 @@ body {
 
 .price-table {
   width: 100%;
-  border-collapse: collapse; /* Hợp nhất đường viền bảng */
+  border-collapse: collapse; 
   background-color: transparent;
 }
 
@@ -201,7 +185,6 @@ body {
   color: #fff;
 }
 
-/* [CHỈNH SỬA] Loại bỏ border ở hàng cuối cùng */
 .price-table-body tbody tr:last-child {
   border-bottom: none;
 }
@@ -289,7 +272,6 @@ body {
   .header-top-row .logo {
     max-width: 70%;
     justify-content: center;
-    /* [CHỈNH SỬA MOBILE] Loại bỏ padding-left trên mobile để logo không bị lệch */
     padding-left: 0;
   }
 
