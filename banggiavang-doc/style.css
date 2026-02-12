@@ -26,7 +26,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4.16vh; 
+  padding-top: 1.39vh; 
 }
 
 .header {
@@ -39,12 +39,14 @@ html, body {
 }
 
 .logo img {
-  max-width: 65.1vw; 
+  width: 50vw;
+  max-width: 50vw; 
   height: auto;
 }
 
 .title-image-wrapper img {
   max-width: 73.7vw; 
+  width: 73.7vw;
   height: auto;
 }
 
@@ -56,7 +58,7 @@ html, body {
 
 .unit-note-container p {
   font-size: 2.59vw; 
-  color: var(--primary-color);
+  color: #fff;
   font-style: italic;
 }
 
@@ -117,7 +119,18 @@ html, body {
 .price-table .category {
   font-size: 3.33vw; 
   text-align: left;
-  padding-left: 1.85vw; 
+  padding-left: 5.0vw; 
+}
+
+.price-table .data-row td:nth-child(1),
+.price-table .category-row td:nth-child(2) {
+  font-weight: normal;
+  color: #fff;
+}
+
+.price-table .price-type {
+  font-weight: normal;
+  color: #fff;
 }
 
 .price-table .price {
@@ -125,5 +138,7 @@ html, body {
 }
 
 .price-table .category[colspan="2"] {
-    width: 52%; 
+  width: 52%; 
+  text-align: left;
+  padding-left: 5.0vw;
 }

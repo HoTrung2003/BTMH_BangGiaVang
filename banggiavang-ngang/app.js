@@ -88,7 +88,7 @@ async function loadGoldPrices() {
           );
           break;
 
-        case 'Vàng miếng SJC (Công ty cổ phần Bảo Tín Mạnh Hải)':
+        case 'Vàng miếng SJC (Công ty cổ phần BTMH)':
           prices = priceMap['Vàng miếng SJC (Cty CP BTMH)'] || prices;
           break;
       }
