@@ -346,3 +346,18 @@ body {
       padding: 0.6rem 0.4rem;
   }
 }
+@media (min-width: 1920px) {
+  html {
+  font-size: 1.05vw;
+  
+  }
+  .logo img {
+  height: clamp(90px, 8vh, 160px);
+  width: auto;
+}
+.title-image-wrapper img {
+  height: clamp(100px, 10vh, 200px);
+  width: auto;
+}
+
+}
