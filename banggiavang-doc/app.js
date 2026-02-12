@@ -100,7 +100,7 @@ async function loadGoldPrices() {
             'Vàng nguyên liệu 99.9'
           );
           break;
-        case 'Vàng miếng SJC (Công ty cổ phần BTMH)':
+        case 'Vàng miếng SJC(Công ty cổ phần BTMH)':
           prices = priceMap['Vàng miếng SJC (Cty CP BTMH)'] || prices;
           break;
       }

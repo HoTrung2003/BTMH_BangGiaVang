@@ -8,26 +8,40 @@
   --primary-color: #edd0a8;
   --header-text-color: #880203;
   --border-color: #d4af37;
+  
+  /* ĐƠN VỊ ĐÃ ĐƯỢC XOAY CHO TV NGANG (1920x1080) */
+  --w: 1vh; /* Chiều rộng tính theo chiều cao màn hình TV */
+  --h: 1vw; /* Chiều cao tính theo chiều rộng màn hình TV */
 }
 
 html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: url("images/mau nen bang gia vang doc.png") no-repeat center center;
-  background-size: cover;
+  background: #880203; /* Màu nền đỏ sẫm mặc định */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
   position: relative;
 }
 
 .container {
-  width: 100%;
-  height: 100%;
+  /* Xoay container để hiển thị ngang trên TV */
+  width: 100vh;
+  height: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center;
+  
+  /* Ảnh nền đi theo container để xoay ngang */
+  background: url("images/mau nen bang gia vang doc.png") no-repeat center center;
+  background-size: 100% 100%;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1.39vh; 
+  padding-top: calc(1.39 * var(--h)); 
 }
 
 .header {
@@ -35,30 +49,30 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.04vh; 
-  margin-bottom: 1.04vh; 
+  gap: calc(1.04 * var(--h)); 
+  margin-bottom: calc(1.04 * var(--h)); 
 }
 
 .logo img {
-  width: 50vw;
-  max-width: 50vw; 
+  width: calc(50 * var(--w));
+  max-width: calc(50 * var(--w)); 
   height: auto;
 }
 
 .title-image-wrapper img {
-  max-width: 73.7vw; 
-  width: 73.7vw;
+  max-width: calc(73.7 * var(--w)); 
+  width: calc(73.7 * var(--w));
   height: auto;
 }
 
 .unit-note-container {
   width: 95%;
   text-align: center;
-  margin-top: -0.52vh; 
+  margin-top: calc(-0.52 * var(--h)); 
 }
 
 .unit-note-container p {
-  font-size: 2.59vw; 
+  font-size: calc(2.59 * var(--w)); 
   color: #fff;
   font-style: italic;
 }
@@ -77,7 +91,7 @@ html, body {
 
 .table-header-image {
   width: 100%;
-  margin-bottom: -0.46vh;   
+  margin-bottom: calc(-0.46 * var(--h));   
 }
 
 .table-header-image img {
@@ -93,11 +107,11 @@ html, body {
 }
 
 .price-table td {
-  padding: 0.41vh 1.38vw; 
-  font-size: 2.96vw; 
+  padding: calc(0.41 * var(--h)) calc(1.38 * var(--w)); 
+  font-size: calc(2.96 * var(--w)); 
   font-weight: bold;
   color: var(--primary-color);
-  border-bottom: 0.14vh solid var(--border-color); 
+  border-bottom: calc(0.14 * var(--h)) solid var(--border-color); 
   vertical-align: middle;
 }
 
@@ -114,13 +128,13 @@ html, body {
 .price-table .price-type,
 .price-table .price {
   text-align: right;
-  padding-right: 2.77vw; 
+  padding-right: calc(2.77 * var(--w)); 
 }
 
 .price-table .category {
-  font-size: 3.33vw; 
+  font-size: calc(3.33 * var(--w)); 
   text-align: left;
-  padding-left: 5.0vw; 
+  padding-left: calc(5.0 * var(--w)); 
 }
 
 .price-table .data-row td:nth-child(1),
@@ -135,11 +149,11 @@ html, body {
 }
 
 .price-table .price {
-  font-size: 3.88vw; 
+  font-size: calc(3.88 * var(--w)); 
 }
 
 .price-table .category[colspan="2"] {
   width: 52%; 
   text-align: left;
-  padding-left: 5.0vw;
+  padding-left: calc(5.0 * var(--w));
 }
