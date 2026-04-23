@@ -46,6 +46,7 @@
 
       .bgv-header {
         width: 100%;
+        background: var(--gold-header-bg);
         border-radius: 12px;
         display: flex;
         flex-direction: column;
@@ -155,11 +156,28 @@
         border-right: none !important;
       }
 
-      .col-loai   { width: 22%; font-weight: 700; padding-left: 1.5vw !important; }
+      /* Gap giữa cột 1 (loại) và cột 2 (mẫu mã) — dùng border-right trắng/bg dày */
+      .col-loai {
+        width: 22%;
+        font-weight: 700;
+        padding-left: 1.5vw !important;
+        border-right: 12px solid var(--bg) !important;
+        text-align: center;
+      }
+
       .col-mau    { width: 36%; }
       .col-ham    { width: 12%; text-align: center; font-weight: 700; }
       .col-mua    { width: 15%; text-align: right; font-weight: 800; padding-right: 1vw !important; font-size: var(--price-font); }
       .col-ban    { width: 15%; text-align: right; font-weight: 800; padding-right: 1vw !important; font-size: var(--price-font); }
+
+      /* Đường kẻ phân chia giữa các sub-row trong cùng group (cột 2 trở đi) */
+      .tbl-body tbody tr.sub-row td {
+        border-top: 1.5px solid rgba(145, 0, 5, 0.15);
+      }
+      /* Dòng đầu tiên của mỗi group không có border-top */
+      .tbl-body tbody tr.sub-row td.col-loai {
+        border-top: none;
+      }
 
       .tbl-body .sjc-row td:first-child {
         font-weight: 700;
@@ -257,13 +275,13 @@
               <td class="col-mua" data-key="NhanTronepviKimGiaBao24K9999_Mua"></td>
               <td class="col-ban" data-key="NhanTronepviKimGiaBao24K9999_Ban"></td>
             </tr>
-            <tr>
+            <tr class="sub-row">
               <td class="col-mau">Hoa Sen (Đồng Vàng)</td>
               <td class="col-ham">999.9</td>
               <td class="col-mua" data-key="DongvangKimGiaBaohoasen_Mua"></td>
               <td class="col-ban" data-key="DongvangKimGiaBaohoasen_Ban"></td>
             </tr>
-            <tr>
+            <tr class="sub-row">
               <td class="col-mau">Tứ Quý (Tùng, Cúc, Trúc, Mai)</td>
               <td class="col-ham">999.9</td>
               <td class="col-mua" data-key="NhanTronepviKimGiaBao24K9999_Mua"></td>
@@ -277,7 +295,7 @@
               <td class="col-mua" data-key="VangTieuKimCat24K999903chi_Mua"></td>
               <td class="col-ban" data-key="VangTieuKimCat24K999903chi_Ban"></td>
             </tr>
-            <tr>
+            <tr class="sub-row">
               <td class="col-mau">Tứ Quý (0,1 chỉ)</td>
               <td class="col-ham">999.9</td>
               <td class="col-mua" data-key="VangTieuKimCat24K999901chi_Mua"></td>
@@ -291,7 +309,7 @@
               <td class="col-mua" data-key="Nhantron9999BTMH_Mua"></td>
               <td class="col-ban" data-key="Nhantron9999BTMH_Ban"></td>
             </tr>
-            <tr>
+            <tr class="sub-row">
               <td class="col-mau">Trang sức 24K</td>
               <td class="col-ham">999.9<br/>99.9</td>
               <td class="col-mua" data-key="Vangtrangsuc24K9999_Mua"></td>
@@ -318,7 +336,7 @@
 
       <!-- Banner: full width, dính đáy -->
       <div class="bgb-banner">
-        <img src="https://www.dropbox.com/scl/fi/mrgoyoslrw4uk7x4i4slg/B-ng-gi-v-ng-02.png?rlkey=j8osaxg4m2gza4e60iblvb34d&st=6ike3mad&dl=1" alt="Banner">
+        <img src="https://www.dropbox.com/scl/fi/ugjierj5s4mn5uxedebnj/Screenshot-2026-04-23-091407.png?rlkey=aetgvdo5chok3jnhxo83t7jit&st=90zia51l&dl=1" alt="Banner">
       </div>
 
     </div>
