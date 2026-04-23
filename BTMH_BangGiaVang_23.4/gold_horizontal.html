@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bảng Giá Vàng - Bảo Tín Mạnh Hải</title>
+    <style>
+      /* Font + fallback */
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+      :root{
+        --bg: #FFFCDD;
+        --accent: #910005;
+        --pale: #F9F0C5; /* pale text / accents */
+        --row-a: #FCE5B3;
+        --row-b: #FFFDDD;
+        --header-text: #F9F0C5;
+        /* responsive font variables; these will be overridden in height-based media queries */
+        --table-font: 30px;
+        --price-font: 30px;
+        --header-font: 28px;
+      }
+
+      html,body{height:100%;}
+      body{
+        margin:0;
+        font-family: "Google Sans", Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--accent);
+        -webkit-font-smoothing:antialiased;
+      }
+      .container{max-width:1800px;margin:18px auto;padding:18px;}
+      .header{display:flex;flex-direction:column;align-items:stretch;margin-bottom:8px}
+      .header-top-row{display:flex;align-items:center;gap:12px}
+      .logo img{width:300px;height:auto;object-fit:contain}
+      .brand-title{flex:1;text-align:center}
+      .brand-title h1{margin:0;font-size:96px;line-height:0.95;color:var(--accent);font-weight:700;letter-spacing:2px}
+      .unit-note-container{display:flex;justify-content:center;margin-top:6px;color:black;font-weight:700;font-style:italic;padding: 20px;}
+
+      /* Table area */
+      .table-scroll{overflow-x:auto;background:transparent;padding-top:12px}
+      .tables-wrapper{min-width:1600px;}
+      table.price-table{width:100%;border-collapse:separate;border-spacing: 5px;table-layout:fixed}
+      .price-table thead th{background:var(--accent);color:var(--header-text);padding:0;font-size:20px;text-align:left}
+      .price-table thead th .th-inner{display:block;margin:5px;padding:10px 12px;font-size:var(--header-font);font-weight:700}
+      .price-table td,.price-table th{border:0;padding:16px 14px;vertical-align:middle;font-size:var(--table-font)}
+      .price-table tbody tr:nth-child(odd){background:var(--row-a)}
+      .price-table tbody tr:nth-child(even){background:var(--row-b)}
+      .category{font-weight:700;padding-left:18px;width:260px;color:var(--accent); align-items: center;background-color: var(--row-a);}
+      .price{color:var(--accent);font-weight:800;text-align:right;padding-right:18px;font-size:var(--price-font)}
+      .price small{font-weight:400}
+      /* make header row visually separated */
+      .price-table.price-table-header{margin-bottom:6px}
+
+      /* scale fonts down when viewport height is limited to avoid vertical scrolling */
+      @media (max-height:900px){
+        :root{--table-font:22px;--price-font:22px;--header-font:24px}
+        .tables-wrapper{min-width:1400px}
+        .brand-title h1{font-size:72px}
+      }
+      @media (max-height:760px){
+        :root{--table-font:18px;--price-font:18px;--header-font:20px}
+        .tables-wrapper{min-width:1200px}
+        .brand-title h1{font-size:56px}
+      }
+      @media (max-height:600px){
+        :root{--table-font:14px;--price-font:14px;--header-font:16px}
+        .tables-wrapper{min-width:1000px}
+        .brand-title h1{font-size:40px}
+      }
+
+      /* smaller screen adjustments */
+      @media (max-width:900px){
+        .brand-title h1{font-size:40px}
+        .logo img{width:90px}
+        .tables-wrapper{min-width:100%}
+        .price-table thead th{font-size:14px;padding:0}
+        .price-table thead th .th-inner{font-size:14px;padding:6px 8px}
+        .price-table td{padding:8px}
+        .price{font-size:16px}
+      }
+
+      /* scale fonts down when viewport height is limited to avoid vertical scrolling */
+          @media (max-height:900px){
+            :root{--table-font:22px;--price-font:22px;--header-font:24px}
+            .tables-wrapper{min-width:1400px}
+            .brand-title h1{font-size:72px}
+          }
+          @media (max-height:760px){
+            :root{--table-font:18px;--price-font:18px;--header-font:20px}
+            .tables-wrapper{min-width:1200px}
+            .brand-title h1{font-size:56px}
+          }
+          @media (max-height:600px){
+            :root{--table-font:14px;--price-font:14px;--header-font:16px}
+            .tables-wrapper{min-width:1000px}
+            .brand-title h1{font-size:40px}
+          }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header-top-row">
+          <div class="logo">
+            <img src="https://dl.dropbox.com/scl/fi/770ur1141k1z9xax36blo/logo__1_-removebg-preview.png?rlkey=se5p9v84vvk64bvrlkah5gft1&st=44nx30s4&dl=0" alt="logo placeholder" />
+          </div>
+          <div class="brand-title">
+            <img src="https://dl.dropbox.com/scl/fi/lovsdyox0sozs6z4lp8r1/Screenshot-2026-04-23-092754.png?rlkey=x2ogdb06nfwti3a9yp5rh79e2&st=k6p2vdfr&dl=0" style="padding-left: 20px;">
+          </div>
+          <div style="width:120px"></div>
+        </div>
+        <div class="unit-note-container">
+          <p>Đơn vị tính: nghìn đồng/chỉ</p>
+        </div>
+      </header>
+
+      <main>
+        <div class="table-scroll">
+          <div class="tables-wrapper">
+            <table class="price-table price-table-header" aria-hidden>
+              <colgroup>
+                <col style="width:22%" />
+                <col style="width:36%" />
+                <col style="width:12%" />
+                <col style="width:15%" />
+                <col style="width:15%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th><div class="th-inner">LOẠI VÀNG<br/>/THƯƠNG PHẨM</div></th>
+                  <th><div class="th-inner">BỘ SƯU TẬP / MẪU MÃ</div></th>
+                  <th><div class="th-inner">HÀM LƯỢNG</div></th>
+                  <th><div class="th-inner">MUA VÀO</div></th>
+                  <th><div class="th-inner">BÁN RA</div></th>
+                </tr>
+              </thead>
+            </table>
+
+            <table class="price-table price-table-body">
+              <colgroup>
+                <col style="width:22%" />
+                <col style="width:36%" />
+                <col style="width:12%" />
+                <col style="width:15%" />
+                <col style="width:15%" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td class="category" rowspan="3">Kim Gia Bảo</td>
+                  <td>Nhẫn tròn ép vỉ</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="NhanTronepviKimGiaBao24K9999_Mua"></td>
+                  <td class="price" data-key="NhanTronepviKimGiaBao24K9999_Ban"></td>
+                </tr>
+                <tr>
+                  <td>Hoa Sen (Đồng Vàng)</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="DongvangKimGiaBaohoasen_Mua"></td>
+                  <td class="price" data-key="DongvangKimGiaBaohoasen_Ban"></td>
+                </tr>
+                <tr>
+                  <td>Tứ Quý (Tùng, Cúc, Trúc, Mai)</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="NhanTronepviKimGiaBao24K9999_Mua"></td>
+                  <td class="price" data-key="NhanTronepviKimGiaBao24K9999_Ban"></td>
+                </tr>
+
+                <tr>
+                  <td class="category" rowspan="2">Tiểu Kim Cát</td>
+                  <td>Lúa, Đậu, Lạc</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="VangTieuKimCat24K999903chi_Mua"></td>
+                  <td class="price" data-key="VangTieuKimCat24K999903chi_Ban"></td>
+                </tr>
+                <tr>
+                  <td>Tứ Quý (0,1 chỉ)</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="VangTieuKimCat24K999901chi_Mua"></td>
+                  <td class="price" data-key="VangTieuKimCat24K999901chi_Ban"></td>
+                </tr>
+
+                <tr>
+                  <td class="category" rowspan="2">Trang Sức</td>
+                  <td>Nhẫn tròn BTMH</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="Nhantron9999BTMH_Mua"></td>
+                  <td class="price" data-key="Nhantron9999BTMH_Ban"></td>
+                </tr>
+                <tr>
+                  <td>Trang sức 24K</td>
+                  <td class="price">999.9<br/>99.9</td>
+                  <td class="price" data-key="Vangtrangsuc24K9999_Mua"></td>
+                  <td class="price" data-key="Vangtrangsuc24K9999_Ban"></td>
+                </tr>
+
+                <tr>
+                  <td class="category">Nguyên liệu</td>
+                  <td>Khối, thỏi, hạt, miếng, và các loại khác</td>
+                  <td class="price">999.9<br/>99.9</td>
+                  <td class="price" data-key="Vangnguyenlieu9999_Mua"></td>
+                  <td class="price" data-key="Vangnguyenlieu9999_Ban"></td>
+                </tr>
+
+                <tr>
+                  <td class="category" colspan="2">Vàng miếng SJC (Công ty cổ phần Bảo Tín Mạnh Hải)</td>
+                  <td class="price">999.9</td>
+                  <td class="price" data-key="VangmiengSJCCtyCPBTMH_Mua"></td>
+                  <td class="price" data-key="VangmiengSJCCtyCPBTMH_Ban"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer style="height:18px;margin-top:14px"></footer>
+    </div>
+
+    <script src="goldrate-updater.js"></script>
+  </body>
+</html>
