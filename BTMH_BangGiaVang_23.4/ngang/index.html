@@ -1,325 +1,244 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Giá Bạc - Bao Tin Manh Hai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bảng Giá Vàng - Bảo Tín Mạnh Hải</title>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    html, body { width: 100vw; height: 100vh; overflow: hidden; }
     body {
       font-family: 'Be Vietnam Pro', sans-serif;
-      background-image: url("background_banggiabac.png");
-      background-color: black;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      min-height: 100vh;
-      padding: 5vh 5vw;
+      background: #fcfbe1;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
     }
-
-    .main-container { width: 100%; }
-
-    /* ===== HEADER ===== */
+    .main-container {
+      width: 100%; height: 100%;
+      padding: 3vh 3vw;
+      display: flex; flex-direction: column; align-items: center;
+    }
     .bgb-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 2.5vh;
-      gap: 2vw;
-      height:clamp(15vh,23vh,30vh);
+      display: flex; align-items: center;
+      margin-bottom: 2.5vh; gap: 1vw; width: 100%;
     }
-
-    .bgb-logo-box {
-      flex: 0 0 40%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .bgb-logo-box img {
-      width: auto;
-      height: clamp(100px, 15vh, 220px);
-    }
-
+    .bgb-logo-box { flex: 0 0 40%; display: flex; justify-content: center; align-items: center; }
+    .bgb-logo-box img { width: 60%; height: auto; }
     .bgb-title-block {
-      flex: 0 0 50%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      flex: 0 0 50%; text-align: center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
     }
+    .bgb-title img { width: 100%; height: auto; min-height: 10vh;}
+    .bgb-subtitle { font-size: 1.8vw; font-style: italic; color: #000; margin-top: 1vh; font-weight: 600; }
 
-    .bgb-title img {
-      width: auto;
-      height: clamp(100px, 15vh, 220px);
-    }
-
-      font-size: clamp(16px, 1.8vw, 32px);
-      font-style: italic;
-      color: #444;
-      margin-top: 1vh;
-      font-weight: 600;
-    }
-
-    /* ===== TABLE WRAPPER ===== */
     .table-wrap { width: 100%; }
+    .tbl-head, .tbl-body { width: 100%; table-layout: fixed; border-collapse: collapse; }
 
-    /*
-     * THEAD — dùng border-collapse: separate + border-spacing
-     * để tạo 10px gap giữa các ô tiêu đề (chỉ header)
-     */
-    .tbl-head {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-      border-collapse: separate;
-      border-spacing: 0;
-      background: transparent;
-    }
+    .col-loai-w { width: 20.27%; }
+    .col-gap-w  { width: 0.5%; }
+    .col-mau-w  { width: 33.88%; }
+    .col-hl-w   { width: 10.25%; }
+    .col-mv-w   { width: 17.98%; }
+    .col-br-w   { width: 17.60%; }
+
+    /* THEAD colgroup widths (adjusted for gaps between all columns) */
+    .h-col-1 { width: 20.27%; }
+    .h-col-gap { width: 0.5%; }
+    .h-col-2 { width: 33.38%; } /* 31.88 - 0.5 */
+    .h-col-3 { width: 9.75%; }  /* 10.25 - 0.5 */
+    .h-col-4 { width: 17.48%; } /* 18.98 - 0.5 */
+    .h-col-5 { width: 17.60%; }
 
     .tbl-head th {
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      border: none;
-      text-align: center;
-      vertical-align: middle;
-      line-height: 1.35;
-      font-size: clamp(16px, 1.5vw, 28px);
-      padding: clamp(20px, 2.2vh, 40px) clamp(10px, 1vw, 20px);
-      background: #2b6e6e;
-      background-clip: padding-box;
-      border-right: 6px solid transparent;
+      color: #f5ecc9; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; text-align: center; vertical-align: middle;
+      line-height: 1.35; font-size: 1.5vw; padding: 1vh 1vw; background: #910005;
     }
-
-    .tbl-head th:last-child {
-      border-right: none !important;
-    }
-
-    .tbl-body {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-
-    .tbl-body tbody tr:nth-child(odd)  { background: rgba(255,255,255,0.65); }
-    .tbl-body tbody tr:nth-child(even) { background: rgba(255,255,255,0.35); }
-
-    .tbl-body tbody tr.footer-row { background: rgba(255,255,255,0.5); }
-
-    .tbl-body tbody tr.footer-row td {
-      /* Bỏ border-top cũ */
-    }
-
-    /* Hàng khoảng trắng 6px giữa nhóm */
-    .tbl-body tbody tr.gap-row td {
-      background: transparent !important;
-      height: 6px;
-      padding: 0 !important;
-    }
+    .tbl-head th.th-gap { background: transparent !important; padding: 0; }
 
     .tbl-body tbody td {
-      border: none;
-      vertical-align: middle;
-      font-size: clamp(16px, 1.5vw, 26px);
-      padding: clamp(15px, 2.2vh, 35px) clamp(10px, 1vw, 20px);
-      color: #2b575e;
-      /* Border right 6px để đồng bộ alignment với header */
-      border-right: 6px solid transparent;
-      /* Mặc định nền tràn ra border để che khoảng hở */
-      background-clip: border-box;
+      border: none; vertical-align: middle;
+      font-size: 1.5vw; padding: 1vh 1vw; color: #910005;
+    }
+    .td-gap { padding: 0 !important; background: transparent !important; }
+
+    td.col-loai {
+      background: #f7e6ba !important;
+      text-align: left; font-weight: 700;
+      padding-left: 2.5vw !important;
+      letter-spacing: 0.05em; line-height: 1.5; font-size: 1.9vw; border-right: none; 
     }
 
-    .tbl-body tbody td:last-child {
-      border-right: none !important;
+    .tbl-body tbody tr.row-odd  td.dc { background: #f7e6be; }
+    .tbl-body tbody tr.row-even td.dc { background: #fcfbe1; }
+
+    .tbl-body tbody tr.row-gap td {
+      height: 0.5vh; padding: 0 !important;
+      background: transparent !important; border: none !important;
     }
 
-    /* Chỉ hiển thị khoảng hở sau cột 1 */
-    #col-loai-rowspan, #col-loai-single {
-      background-clip: padding-box !important;
+    td.col-mau { text-align: left; font-weight: 600; padding-left: 4vw !important; line-height: 1.45; font-size: 1.7vw; }
+    td.col-ham-luong { text-align: center; font-weight: 600; }
+    td.col-mua-vao   { text-align: center; font-weight: 700; font-size: 2.0vw; }
+    td.col-ban-ra    { text-align: center; font-weight: 700; font-size: 2.0vw; }
+
+    tr.sjc-row td.col-loai {
+      font-size: 1.55vw; text-align: left; padding-left: 2vw !important; border-right: none;
     }
 
-    /* ===== ID / CLASS CỘT ===== */
+    /* SJC Table Colgroup Widths */
+    .sjc-col-1 { width: 54.65%; } /* 20.27 + 0.5 + 31.88 */
+    .sjc-gap   { width: 0.5%; }
+    .sjc-col-hl { width: 9.75%; } /* 10.25 - 0.5 (to align with body hl after gap shift) */
+    .sjc-col-mv { width: 17.98%; }
+    .sjc-col-br { width: 17.60%; }
 
-    /* THEAD widths - Sum 100% */
-    #th-loai     { text-align: center; width: 24%; }
-    #th-bst      { text-align: center; width: 24.7%; }
-    #th-donvi    { text-align: center; width: 12%; }
-    #th-hamluong { text-align: center; width: 8.7%; }
-    #th-muavao   { text-align: center; width: 13.7%; }
-    #th-banra    { text-align: center; width: 13.7%; }
-
-    #col-loai-rowspan { width: 24%; }
-    #col-loai-single  { width: 24%; }
-    .col-bo-suu-tap   { width: 24.7%; }
-    .col-don-vi       { width: 12%; }
-    .col-ham-luong    { width: 8.7%; }
-    .col-mua-vao      { width: 13.7%; }
-    .col-ban-ra       { width: 13.7%; }
-
-    /* CỘT 1A — rowspan */
-    #col-loai-rowspan {
-      text-align: center;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      line-height: 1.5;
-      background: rgba(255,255,255,0.5) !important;
-      font-size: clamp(16px, 2.2vw, 34px);
-    }
-
-    /* CỘT 1B — không rowspan */
-    #col-loai-single {
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      line-height: 1.5;
-      text-align: center;
-      padding-left: clamp(12px, 1.2vw, 24px) !important;
-      font-size: clamp(16px, 1.8vw, 32px);
-    }
-
-    /* CỘT 2 — Bộ sưu tập */
-    .col-bo-suu-tap {
-      text-align: left;
-      font-weight: 600;
-      padding-left: clamp(20px, 2vw, 40px) !important; 
-      line-height: 1.45;
-      font-size: clamp(16px, 1.8vw, 32px);
-    }
-    .col-bo-suu-tap .sub {
-      text-align: left;
-      font-weight: 600;
-    }
-
-    /* CỘT 3 — Đơn vị */
-    .col-don-vi { 
-      text-align: left;
-      font-weight: 600;
-      padding-left: clamp(12px, 1.2vw, 24px) !important; 
-    }
-
-    /* CỘT 4 — Hàm lượng */
-    .col-ham-luong { 
-      text-align: center;
-      font-weight: 600;
-    }
-
-    /* CỘT 5 — Mua vào */
-    .col-mua-vao {
-      text-align: center;
-      font-weight: 700;
-      font-size: clamp(22px, 2.2vw, 40px);
-    }
-    /* CỘT 6 — Bán ra */
-    .col-ban-ra { 
-      text-align: center;
-      font-weight: 700;
-      font-size: clamp(22px, 2.2vw, 40px);
-    }
   </style>
 </head>
 <body>
   <div class="main-container">
-
-    <!-- HEADER -->
     <div class="bgb-header">
       <div class="bgb-logo-box">
-        <img
-          src="https://dl.dropbox.com/scl/fi/770ur1141k1z9xax36blo/logo__1_-removebg-preview.png?rlkey=se5p9v84vvk64bvrlkah5gft1&st=44nx30s4&dl=0"
-          alt="Bao Tin Manh Hai Logo"
-        />
+        <img src="https://dl.dropbox.com/scl/fi/770ur1141k1z9xax36blo/logo__1_-removebg-preview.png?rlkey=se5p9v84vvk64bvrlkah5gft1&st=44nx30s4&raw=1" alt="Logo" />
       </div>
       <div class="bgb-title-block">
         <div class="bgb-title">
-          <img src="https://www.dropbox.com/scl/fi/h0ad1h4rzr0m9sgvvxos6/B-ng_gi-_b-c-01-removebg-preview.png?rlkey=rmi9mep5gssxbj0m0admipeww&st=xhdaw5r2&dl=1" alt="Bảng Giá Bạc">
+          <img src="https://www.dropbox.com/scl/fi/r1mmryc9b3rvqu36p500p/Screenshot_2026-04-23_092754-removebg-preview.png?rlkey=t9el3f0cybtifxar6wl95hqn8&st=r8sfb57o&raw=1" alt="Bảng Giá Vàng" />
         </div>
         <div class="bgb-subtitle">Đơn vị tính: nghìn đồng/chỉ</div>
       </div>
     </div>
 
     <div class="table-wrap">
-
-      <!-- THEAD riêng: có gap 10px giữa các cột tiêu đề -->
       <table class="tbl-head">
+        <colgroup>
+          <col class="h-col-1"><col class="h-col-gap">
+          <col class="h-col-2"><col class="h-col-gap">
+          <col class="h-col-3"><col class="h-col-gap">
+          <col class="h-col-4"><col class="h-col-gap">
+          <col class="h-col-5">
+        </colgroup>
         <thead>
           <tr>
-            <th id="th-loai">Loại bạc</th>
-            <th id="th-bst">Bộ sưu tập</th>
-            <th id="th-donvi">Đơn vị</th>
-            <th id="th-hamluong">Hàm<br>lượng</th>
-            <th id="th-muavao">Mua vào</th>
-            <th id="th-banra">Bán ra</th>
+            <th class="th-loai">Loại vàng<br>/Thương phẩm</th>
+            <th class="th-gap"></th>
+            <th class="th-bst">Bộ sưu tập / Mẫu mã</th>
+            <th class="th-gap"></th>
+            <th class="th-hl">Hàm<br>lượng</th>
+            <th class="th-gap"></th>
+            <th class="th-mv">Mua vào</th>
+            <th class="th-gap"></th>
+            <th class="th-br">Bán ra</th>
           </tr>
         </thead>
       </table>
 
-      <!-- TBODY riêng: collapse bình thường, dữ liệu liền nhau -->
       <table class="tbl-body">
+        <colgroup>
+          <col class="col-loai-w"><col class="col-gap-w">
+          <col class="col-mau-w"><col class="col-hl-w">
+          <col class="col-mv-w"><col class="col-br-w">
+        </colgroup>
         <tbody>
+          <tr class="row-gap"><td colspan="6"></td></tr>
 
-          <tr>
-            <td id="col-loai-rowspan" rowspan="5">BẠC<br>NGÂN GIA BẢO</td>
-            <td class="col-bo-suu-tap">Tứ Quý 1 lượng<br><span class="sub">(Tùng Cúc Trúc Mai)</span></td>
-            <td class="col-don-vi">1 Lượng</td>
-            <td class="col-ham-luong">999.0</td>
-            <td class="col-mua-vao">17.720</td>
-            <td class="col-ban-ra">18.020</td>
+          <!-- Kim Gia Bảo -->
+          <tr class="data-row row-odd">
+            <td class="col-loai" rowspan="5">Kim Gia Bảo</td>
+            <td class="td-gap" rowspan="5"></td>
+            <td class="col-mau dc">Nhẫn tròn ép vỉ</td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">17.720</td>
+            <td class="col-ban-ra dc">18.020</td>
+          </tr>
+          <tr class="row-gap"><td colspan="4"></td></tr>
+          <tr class="data-row row-even">
+            <td class="col-mau dc">Hoa Sen (Đồng Vàng)</td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">17.720</td>
+            <td class="col-ban-ra dc">18.020</td>
+          </tr>
+          <tr class="row-gap"><td colspan="4"></td></tr>
+          <tr class="data-row row-odd">
+            <td class="col-mau dc">Tứ Quý (Tùng, Cúc, Trúc, Mai)</td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">17.720</td>
+            <td class="col-ban-ra dc">18.020</td>
           </tr>
 
-          <tr>
-            <td class="col-bo-suu-tap">Tứ Quý 3 lượng<br><span class="sub">(Tùng Cúc Trúc Mai)</span></td>
-            <td class="col-don-vi">3 Lượng</td>
-            <td class="col-ham-luong">999.0</td>
-            <td class="col-mua-vao">17.720</td>
-            <td class="col-ban-ra">18.020</td>
+          <tr class="row-gap"><td colspan="6"></td></tr>
+
+          <!-- Tiểu Kim Cát -->
+          <tr class="data-row row-even">
+            <td class="col-loai" rowspan="3">Tiểu Kim Cát</td>
+            <td class="td-gap" rowspan="3"></td>
+            <td class="col-mau dc">Lúa, Đậu, Lạc</td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">1.772</td>
+            <td class="col-ban-ra dc">1.802</td>
+          </tr>
+          <tr class="row-gap"><td colspan="4"></td></tr>
+          <tr class="data-row row-odd">
+            <td class="col-mau dc">Tứ Quý (Tùng, Cúc, Trúc, Mai)</td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">1.772</td>
+            <td class="col-ban-ra dc">1.802</td>
           </tr>
 
-          <tr>
-            <td class="col-bo-suu-tap">Thỏi 5 lượng</td>
-            <td class="col-don-vi">10 Lượng</td>
-            <td class="col-ham-luong">999.0</td>
-            <td class="col-mua-vao">17.720</td>
-            <td class="col-ban-ra">18.020</td>
+          <tr class="row-gap"><td colspan="6"></td></tr>
+
+          <!-- Trang Sức -->
+          <tr class="data-row row-even">
+            <td class="col-loai" rowspan="3">Trang Sức</td>
+            <td class="td-gap" rowspan="3"></td>
+            <td class="col-mau dc">Nhẫn tròn BTMH</td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">17.570</td>
+            <td class="col-ban-ra dc">17.870</td>
+          </tr>
+          <tr class="row-gap"><td colspan="4"></td></tr>
+          <tr class="data-row row-odd">
+            <td class="col-mau dc">Trang sức 24K</td>
+            <td class="col-ham-luong dc">99.9</td>
+            <td class="col-mua-vao dc">17.510</td>
+            <td class="col-ban-ra dc">17.870</td>
           </tr>
 
-          <tr>
-            <td class="col-bo-suu-tap">Thỏi 10 lượng</td>
-            <td class="col-don-vi">1 Kilo gram</td>
-            <td class="col-ham-luong">999.0</td>
-            <td class="col-mua-vao">17.720</td>
-            <td class="col-ban-ra">18.020</td>
+          <tr class="row-gap"><td colspan="6"></td></tr>
+
+          <!-- Nguyên Liệu -->
+          <tr class="data-row row-even" style="padding: 0.5vh 0.5vw;">
+            <td class="col-loai">Nguyên Liệu</td>
+            <td class="td-gap"></td>
+            <td class="col-mau dc">Khối, thỏi, hạt, miếng,<br>và các loại khác</td>
+            <td class="col-ham-luong dc" style="line-height: 1.7;">999.9<br>99.9</td>
+            <td class="col-mua-vao dc" style="line-height: 1.7;">17.510<br>17.510</td>
+            <td class="col-ban-ra dc" style="line-height: 1.7;">0<br>0</td>
           </tr>
 
-          <tr>
-            <td class="col-bo-suu-tap">Thỏi 1kg</td>
-            <td class="col-don-vi">1 Kilo gram</td>
-            <td class="col-ham-luong">999.0</td>
-            <td class="col-mua-vao">17.720</td>
-            <td class="col-ban-ra">18.020</td>
-          </tr>
+          <tr class="row-gap"><td colspan="6"></td></tr>
 
-
-          <!-- Khoảng trắng 6px giữa các nhóm -->
-          <tr class="gap-row">
-            <td colspan="6"></td>
-          </tr>
-          <tr class="footer-row">
-            <td id="col-loai-single">BẠC NGUYÊN LIỆU</td>
-            <td class="col-bo-suu-tap"></td>
-            <td class="col-don-vi"></td>
-            <td class="col-ham-luong">999.0</td>
-            <td class="col-mua-vao">17.720</td>
-            <td class="col-ban-ra"></td>
-          </tr>
-
+          <!-- SJC removed from here -->
         </tbody>
       </table>
 
+      <!-- SJC Table -->
+      <table class="tbl-body tbl-sjc">
+        <colgroup>
+          <col class="sjc-col-1"><col class="sjc-gap">
+          <col class="sjc-col-hl"><col class="sjc-col-mv"><col class="sjc-col-br">
+        </colgroup>
+        <tbody>
+          <tr class="data-row row-odd sjc-row">
+            <td class="col-loai" style="font-size: 1.5vw;">Vàng Miếng SJC (Công ty cổ phần Bảo Tín Mạnh Hải)</td>
+            <td class="td-gap"></td>
+            <td class="col-ham-luong dc">999.9</td>
+            <td class="col-mua-vao dc">17.720</td>
+            <td class="col-ban-ra dc"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </body>
