@@ -7,35 +7,40 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
       :root{
-        --bg: #FFFCDD;
+        --bg: #fcfbe1;
         --accent: #910005;
         --pale: #F9F0C5;
-        --row-a: #FCE5B3;
-        --row-b: #FFFDDD;
+        --row-a: #f7e6ba;
+        --row-b: #fcfbe1;
         --header-text: #F9F0C5;
         --gold-header-bg: #C8920A;
-        --table-font: 30px;
-        --price-font: 30px;
-        --header-font: 28px;
+        --table-font: 1.6vh;
+        --price-font: 1.8vh;
+        --header-font: 1.4vh;
+        --text-header-row: #f7f1cb;
       }
 
-      html,body{height:100%;margin:0;}
-      body{
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      body {
         font-family: "Google Sans", Roboto, Arial, sans-serif;
         background: var(--bg);
         color: var(--accent);
-        -webkit-font-smoothing:antialiased;
+        -webkit-font-smoothing: antialiased;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        width: 100vw;
-        overflow-x: hidden;
       }
 
       .main-container {
         width: 100%;
-        max-width: 1800px;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -44,17 +49,15 @@
         box-sizing: border-box;
       }
 
+      /* ===== HEADER — kích thước đồng nhất với bảng giá bạc ===== */
       .bgv-header {
         width: 100%;
-        background: var(--gold-header-bg);
-        border-radius: 12px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 1.2vh;
-        padding: 2vh 2vw 1.5vh 2vw;
-        margin-bottom: 1.5vh;
+        gap: 1.0vh;
+        margin-bottom: 1.0vh;
         flex-shrink: 0;
         box-sizing: border-box;
       }
@@ -68,7 +71,7 @@
 
       .bgv-logo-box img {
         width: auto;
-        height: 9vh;
+        height: 8vh; /* bằng bảng giá bạc */
       }
 
       .bgv-title-block {
@@ -82,15 +85,15 @@
 
       .bgv-title img {
         width: auto;
-        height: 7vh;
+        height: 6vh; /* bằng bảng giá bạc */
       }
 
       .bgv-subtitle {
         font-size: 1.8vh;
         font-style: italic;
-        color: #fff8e1;
-        margin-top: 0.5vh;
-        font-weight: 600;
+        color: #000000; /* sửa: từ #fff8e1 (vô hình) → đen để hiện rõ */
+        margin-top: 0.4vh;
+        font-weight: 500;
       }
 
       /* ===== TABLE ===== */
@@ -103,15 +106,14 @@
       .tbl-head {
         display: table;
         width: 100%;
-        min-width: 900px;
         table-layout: fixed;
         border-collapse: separate;
         border-spacing: 0 0;
       }
 
       .tbl-head th {
-        color: #fff;
-        font-weight: 700;
+        color: var(--text-header-row);
+        font-weight: 520;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         border: none;
@@ -119,9 +121,9 @@
         vertical-align: middle;
         line-height: 1.35;
         font-size: var(--header-font);
-        padding: 1.2vh 1vw;
+        padding: 0.8vh 0.5vw;
         background: var(--accent);
-        border-right: 4px solid transparent;
+        border-right: 2px solid transparent;
         background-clip: padding-box;
       }
 
@@ -132,11 +134,10 @@
       .tbl-body {
         display: table;
         width: 100%;
-        min-width: 900px;
         table-layout: fixed;
         border-collapse: separate;
-        border-spacing: 0 5px;
-        margin-top: 4px;
+        border-spacing: 0 2px;
+        margin-top: -2px; /* Remove gap between thead and tbody */
       }
 
       .tbl-body tbody tr:nth-child(odd)  { background: var(--row-a); }
@@ -145,10 +146,8 @@
       .tbl-body tbody td {
         border: none;
         vertical-align: middle;
-        font-size: var(--table-font);
-        padding: 1.0vh 1.0vw;
+        padding: 0.5vh 0.5vw;
         color: var(--accent);
-        border-right: 4px solid transparent;
         background-clip: border-box;
       }
 
@@ -156,81 +155,88 @@
         border-right: none !important;
       }
 
-      /* Gap giữa cột 1 (loại) và cột 2 (mẫu mã) — dùng border-right trắng/bg dày */
+      #th-loai{
+        width: 22%;
+      }
+      #th-maumau{
+        width: 36%;
+      }
+      #th-hamluong{
+        width: 12%;
+      }
+      #th-muavao{
+        width: 15%;
+      }
+      #th-banra{
+        width: 15%;
+      }
+
       .col-loai {
         width: 22%;
-        font-weight: 700;
-        padding-left: 1.5vw !important;
-        border-right: 12px solid var(--bg) !important;
+        font-size: 1.6vh;
+        font-weight: 600;
+        border-right: 2px solid var(--bg) !important;
         text-align: center;
+        background: var(--row-a);
+      }
+      
+      .col-mau    { width: 36%; padding-left: 2vw !important; font-weight: 520;  font-size: 1.5vh;}
+      .col-ham    { width: 12%; text-align: center; font-weight: 520; font-size: 1.5vh;}
+      .col-mua    { width: 15%; text-align: right; font-weight: 600; padding-right: 2vw !important; font-size: var(--price-font); }
+      .col-ban    { width: 15%; text-align: right; font-weight: 600; padding-right: 2vw !important; font-size: var(--price-font); }
+
+      .col-loai.sjc-row{
+        border-right: none !important;
+        font-size: 1.4vh;
       }
 
-      .col-mau    { width: 36%; }
-      .col-ham    { width: 12%; text-align: center; font-weight: 700; }
-      .col-mua    { width: 15%; text-align: right; font-weight: 800; padding-right: 1vw !important; font-size: var(--price-font); }
-      .col-ban    { width: 15%; text-align: right; font-weight: 800; padding-right: 1vw !important; font-size: var(--price-font); }
-
-      /* Đường kẻ phân chia giữa các sub-row trong cùng group (cột 2 trở đi) */
-      .tbl-body tbody tr.sub-row td {
-        border-top: 1.5px solid rgba(145, 0, 5, 0.15);
-      }
-      /* Dòng đầu tiên của mỗi group không có border-top */
       .tbl-body tbody tr.sub-row td.col-loai {
         border-top: none;
       }
 
       .tbl-body .sjc-row td:first-child {
         font-weight: 700;
-        padding-left: 1.5vw !important;
+        padding-left: 5vw !important;
+        text-align: left;
       }
 
-      /* ===== BANNER: full width, dính đáy màn hình ===== */
+      /* ===== BANNER: full width, height theo tỉ lệ ảnh ===== */
       .bgb-banner {
         width: 100vw;
         margin-left: -3vw;
         margin-right: -3vw;
-        margin-top: auto;
+        margin-top:auto;
         flex-shrink: 0;
         line-height: 0;
       }
 
       .bgb-banner img {
+        margin-top:1vh;
         width: 100%;
-        height: auto;
+        height: 100%;
         display: block;
+        /* Bóp méo tự do theo chiều cao còn lại */
+        object-fit: fill;
       }
+  </style>
 
-      @media (max-height:900px){
-        :root{--table-font:22px;--price-font:22px;--header-font:24px}
-      }
-      @media (max-height:760px){
-        :root{--table-font:18px;--price-font:18px;--header-font:20px}
-      }
-      @media (max-height:600px){
-        :root{--table-font:14px;--price-font:14px;--header-font:16px}
-      }
-      @media (max-width:900px){
-        :root{--table-font:14px;--price-font:14px;--header-font:14px}
-        .bgv-logo-box img{height:6vh}
-        .bgv-title img{height:5vh}
-      }
     </style>
   </head>
   <body>
     <div class="main-container">
 
-      <!-- HEADER: nền vàng -->
+      <!-- HEADER -->
       <div class="bgv-header">
         <div class="bgv-logo-box">
           <img
-            src="https://dl.dropbox.com/scl/fi/770ur1141k1z9xax36blo/logo__1_-removebg-preview.png?rlkey=se5p9v84vvk64bvrlkah5gft1&st=44nx30s4&dl=0"
+            src="https://dl.dropbox.com/scl/fi/770ur1141k1z9xax36blo/logo__1_-removebg-preview.png?rlkey=se5p9v84vvk64bvrlkah5gft1&st=44nx30s4&raw=1"
             alt="Bảo Tín Mạnh Hải logo"
           />
         </div>
         <div class="bgv-title-block">
           <div class="bgv-title">
             <img
-              src="https://dl.dropbox.com/scl/fi/lovsdyox0sozs6z4lp8r1/Screenshot-2026-04-23-092754.png?rlkey=x2ogdb06nfwti3a9yp5rh79e2&st=k6p2vdfr&dl=0"
+              src="https://dl.dropbox.com/scl/fi/lovsdyox0sozs6z4lp8r1/Screenshot-2026-04-23-092754.png?rlkey=x2ogdb06nfwti3a9yp5rh79e2&st=k6p2vdfr&raw=1"
               alt="Bảng Giá Vàng"
             />
           </div>
@@ -250,11 +256,11 @@
           </colgroup>
           <thead>
             <tr>
-              <th>LOẠI VÀNG / THƯƠNG PHẨM</th>
-              <th>BỘ SƯU TẬP / MẪU MÃ</th>
-              <th>HÀM LƯỢNG</th>
-              <th>MUA VÀO</th>
-              <th>BÁN RA</th>
+              <th id="th-loai">LOẠI VÀNG/<br>THƯƠNG PHẨM</th>
+              <th id="th-maumau">BỘ SƯU TẬP/<br>MẪU MÃ</th>
+              <th id="th-hamluong">HÀM LƯỢNG</th>
+              <th id="th-muavao">MUA VÀO</th>
+              <th id="th-banra">BÁN RA</th>
             </tr>
           </thead>
         </table>
@@ -269,78 +275,92 @@
           </colgroup>
           <tbody>
             <tr>
-              <td class="col-loai" rowspan="3">Kim Gia Bảo</td>
+              <td class="col-loai" rowspan="3">Kim<br>Gia<br>Bảo</td>
               <td class="col-mau">Nhẫn tròn ép vỉ</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="NhanTronepviKimGiaBao24K9999_Mua"></td>
-              <td class="col-ban" data-key="NhanTronepviKimGiaBao24K9999_Ban"></td>
+              <td class="col-mua" data-key="NhanTronepviKimGiaBao24K9999_Mua">17.720</td>
+              <td class="col-ban" data-key="NhanTronepviKimGiaBao24K9999_Ban">18.020</td>
             </tr>
             <tr class="sub-row">
               <td class="col-mau">Hoa Sen (Đồng Vàng)</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="DongvangKimGiaBaohoasen_Mua"></td>
-              <td class="col-ban" data-key="DongvangKimGiaBaohoasen_Ban"></td>
+              <td class="col-mua" data-key="DongvangKimGiaBaohoasen_Mua">17.720</td>
+              <td class="col-ban" data-key="DongvangKimGiaBaohoasen_Ban">18.020</td>
             </tr>
             <tr class="sub-row">
-              <td class="col-mau">Tứ Quý (Tùng, Cúc, Trúc, Mai)</td>
+              <td class="col-mau">Tứ Quý<br>(Tùng, Cúc, Trúc, Mai)</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="NhanTronepviKimGiaBao24K9999_Mua"></td>
-              <td class="col-ban" data-key="NhanTronepviKimGiaBao24K9999_Ban"></td>
+              <td class="col-mua" data-key="NhanTronepviKimGiaBao24K9999_Mua">17.720</td>
+              <td class="col-ban" data-key="NhanTronepviKimGiaBao24K9999_Ban">18.020</td>
             </tr>
 
             <tr>
-              <td class="col-loai" rowspan="2">Tiểu Kim Cát</td>
+              <td class="col-loai" rowspan="2">Tiểu<br>Kim<br>Cát</td>
               <td class="col-mau">Lúa, Đậu, Lạc</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="VangTieuKimCat24K999903chi_Mua"></td>
-              <td class="col-ban" data-key="VangTieuKimCat24K999903chi_Ban"></td>
+              <td class="col-mua" data-key="VangTieuKimCat24K999903chi_Mua">1.772</td>
+              <td class="col-ban" data-key="VangTieuKimCat24K999903chi_Ban">1.802</td>
             </tr>
             <tr class="sub-row">
               <td class="col-mau">Tứ Quý (0,1 chỉ)</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="VangTieuKimCat24K999901chi_Mua"></td>
-              <td class="col-ban" data-key="VangTieuKimCat24K999901chi_Ban"></td>
+              <td class="col-mua" data-key="VangTieuKimCat24K999901chi_Mua">1.772</td>
+              <td class="col-ban" data-key="VangTieuKimCat24K999901chi_Ban">1.802</td>
             </tr>
 
             <tr>
-              <td class="col-loai" rowspan="2">Trang Sức</td>
+              <td class="col-loai" rowspan="2">Trang<br>Sức</td>
               <td class="col-mau">Nhẫn tròn BTMH</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="Nhantron9999BTMH_Mua"></td>
-              <td class="col-ban" data-key="Nhantron9999BTMH_Ban"></td>
+              <td class="col-mua" data-key="Nhantron9999BTMH_Mua">1.772</td>
+              <td class="col-ban" data-key="Nhantron9999BTMH_Ban">1.802</td>
             </tr>
             <tr class="sub-row">
               <td class="col-mau">Trang sức 24K</td>
-              <td class="col-ham">999.9<br/>99.9</td>
-              <td class="col-mua" data-key="Vangtrangsuc24K9999_Mua"></td>
-              <td class="col-ban" data-key="Vangtrangsuc24K9999_Ban"></td>
+              <td class="col-ham">99.9</td>
+              <td class="col-mua" data-key="Vangtrangsuc24K9999_Mua">1.772</td>
+              <td class="col-ban" data-key="Vangtrangsuc24K9999_Ban">1.802</td>
             </tr>
 
             <tr>
-              <td class="col-loai">Nguyên liệu</td>
-              <td class="col-mau">Khối, thỏi, hạt, miếng, và các loại khác</td>
+              <td class="col-loai">Nguyên<br>Liệu</td>
+              <td class="col-mau">Khối, thỏi, hạt, miếng,<br>và các loại khác</td>
               <td class="col-ham">999.9<br/>99.9</td>
-              <td class="col-mua" data-key="Vangnguyenlieu9999_Mua"></td>
-              <td class="col-ban" data-key="Vangnguyenlieu9999_Ban"></td>
+              <td class="col-mua" data-key="Vangnguyenlieu9999_Mua">1.772</td>
+              <td class="col-ban" data-key="Vangnguyenlieu9999_Ban">1.802</td>
             </tr>
 
             <tr class="sjc-row">
-              <td class="col-loai" colspan="2">Vàng miếng SJC (Công ty cổ phần Bảo Tín Mạnh Hải)</td>
+              <td class="col-loai sjc-row" colspan="2">Vàng Miếng SJC<br>(Công ty cổ phần Bảo Tín Mạnh Hải)</td>
               <td class="col-ham">999.9</td>
-              <td class="col-mua" data-key="VangmiengSJCCtyCPBTMH_Mua"></td>
-              <td class="col-ban" data-key="VangmiengSJCCtyCPBTMH_Ban"></td>
+              <td class="col-mua" data-key="VangmiengSJCCtyCPBTMH_Mua">1.772</td>
+              <td class="col-ban" data-key="VangmiengSJCCtyCPBTMH_Ban">1.802</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Banner: full width, dính đáy -->
+      <!-- Banner -->
       <div class="bgb-banner">
-        <img src="https://www.dropbox.com/scl/fi/ugjierj5s4mn5uxedebnj/Screenshot-2026-04-23-091407.png?rlkey=aetgvdo5chok3jnhxo83t7jit&st=90zia51l&dl=1" alt="Banner">
+        <img src="https://www.dropbox.com/scl/fi/mrgoyoslrw4uk7x4i4slg/B-ng-gi-v-ng-02.png?rlkey=j8osaxg4m2gza4e60iblvb34d&st=3dqajev5&raw=1" alt="Banner">
       </div>
 
     </div>
+  <script>
+    function fitBanner() {
+      const container = document.querySelector('.main-container');
+      const banner = document.querySelector('.bgb-banner');
+      const header = document.querySelector('.bgv-header');
+      const tableWrap = document.querySelector('.table-wrap');
 
-    <script src="goldrate-updater.js"></script>
+      banner.style.height = '0px';
+      const used = header.offsetHeight + tableWrap.offsetHeight;
+      const remaining = container.clientHeight - used;
+      banner.style.height = Math.max(0, remaining) + 'px';
+    }
+
+    fitBanner();
+    window.addEventListener('resize', fitBanner);
+  </script>
   </body>
 </html>
